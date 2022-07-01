@@ -19,9 +19,12 @@
 
 <section>
 	<h1>My lists</h1>
-	{#each lists as list}
-		<h2>Packing list for {list.destination}</h2>
-	{/each}
+	<p>You have {lists.length} lists</p>
+	<ul>
+		{#each lists as list}
+			<li>Packing list for <a href={`/lists/${list.destination}`}>{list.destination}</a></li>
+		{/each}
+	</ul>
 </section>
 
 <style>

@@ -19,13 +19,15 @@
 <style>
 	@import '../app.css';
 	.nav-link {
-		border: 1px solid gray;
-		padding: 1rem;
-	}
-	.nav-link {
 		background-color: black;
 		color: ghostwhite;
 		margin: 0 0.5rem;
+		transform: rotate(-5deg);
+		padding: 1rem;
+	}
+
+	.nav-link:hover {
+		transform: scale(1.2);
 	}
 
 	.nav {

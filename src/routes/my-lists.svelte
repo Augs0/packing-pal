@@ -1,4 +1,15 @@
-<script context="module">
+<script>
+	import { onMount } from 'svelte';
+	import ListStore from '../stores/ListStore';
+	import { fetchLists } from '../firebase/functions/read';
+
+	let lists = [];
+	onMount(async () => {
+		const userLists = await fetchLists();
+		ListStore.subscribe(() => {
+			lists = userLists;
+		});
+	});
 </script>
 
 <svelte:head>
@@ -8,7 +19,9 @@
 
 <section>
 	<h1>My lists</h1>
-	<p>Lists will be here</p>
+	{#each lists as list}
+		<h2>Packing list for {list.destination}</h2>
+	{/each}
 </section>
 
 <style>

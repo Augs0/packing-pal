@@ -5,8 +5,6 @@
 	<a class="nav-link" href="/">Home</a>
 
 	<a class="nav-link" href="/my-lists">View your lists</a>
-
-	<a class="nav-link" href="/my-trips">See trips</a>
 </nav>
 <main class="container__main"><slot /></main>
 <footer class="footer">

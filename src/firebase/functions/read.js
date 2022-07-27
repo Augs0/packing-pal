@@ -1,6 +1,6 @@
 import db from '../firebase';
 
-import { doc, collection, query, where, getDoc, getDocs } from 'firebase/firestore';
+import { collection, query, getDocs } from 'firebase/firestore';
 
 export const fetchLists = () => {
 	const listsRef = collection(db, 'lists');
@@ -12,9 +12,13 @@ export const fetchLists = () => {
 		snapshots.forEach((doc) => {
 			const data = doc.data();
 			data.uid = doc.id;
-			data.type = data.type;
-			data.destination = data.destination;
-			data.items = data.items.map((item) => item);
+			data.items = [];
+
+			for (const itemNumber in data.newItems) {
+				const item = { ...data.newItems[itemNumber], itemNumber };
+				data.items.push(item);
+			}
+
 			listArr.push(data);
 		});
 
